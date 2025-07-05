@@ -1,12 +1,17 @@
-fastapi[standard]~=0.115.14
-fastapi-utils[all]~=0.8.0
+# FastAPI and extensions
+fastapi[standard] ~= 0.115.14         # FastAPI with all optional standard dependencies (includes uvicorn, etc.)
+fastapi-utils[all] ~= 0.8.0           # Extra FastAPI utilities (CBV, etc.)
 
-sqlmodel~=0.0.24
-psycopg2~=2.9.10
-asyncpg~=0.30.0
+# SQL and DB access
+sqlmodel ~= 0.0.24                    # SQLAlchemy + Pydantic-based ORM
+greenlet ~= 3.2.3                     # Required for SQLAlchemy async support
+psycopg2 ~= 2.9.10                    # PostgreSQL driver for sync SQLAlchemy
+asyncpg ~= 0.30.0                     # PostgreSQL driver for async SQLAlchemy
 
-pydantic~=2.11.7
-pydantic-settings~=2.10.1
+# Pydantic & Settings
+pydantic ~= 2.11.7                    # Latest stable v2 release of Pydantic
+pydantic-settings ~= 2.10.1          # Environment/settings loader compatible with Pydantic v2
 
-pyjwt[crypto]~=2.10.1
-passlib[bcrypt]~=1.7.4
+# Auth and security
+PyJWT[crypto] ~= 2.10.1              # JSON Web Token generation with crypto (e.g., RSA, etc.)
+passlib[bcrypt] ~= 1.7.4             # Password hashing using bcrypt
