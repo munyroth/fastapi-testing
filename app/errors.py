@@ -35,7 +35,7 @@ def register_all_errors(app: FastAPI):
     )
 
     @app.exception_handler(PyJWTError)
-    async def pyjwt__error(request, exc):
+    async def pyjwt__error(request: Request, exc: PyJWTError):
         return JSONResponse(
             content={
                 "message": "Unauthorized access. Please check your credentials.",
@@ -44,8 +44,9 @@ def register_all_errors(app: FastAPI):
             status_code=status.HTTP_401_UNAUTHORIZED,
         )
 
-    @app.exception_handler(500)
-    async def internal_server_error(request, exc):
+    @app.exception_handler(SQLAlchemyError)
+    async def database__error(request: Request, exc: SQLAlchemyError):
+        print(str(exc))
         return JSONResponse(
             content={
                 "message": "Oops! Something went wrong",
@@ -54,9 +55,8 @@ def register_all_errors(app: FastAPI):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
-    @app.exception_handler(SQLAlchemyError)
-    async def database__error(request, exc):
-        print(str(exc))
+    @app.exception_handler(500)
+    async def internal_server_error(request: Request, exc):
         return JSONResponse(
             content={
                 "message": "Oops! Something went wrong",
