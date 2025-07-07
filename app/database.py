@@ -2,15 +2,10 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlmodel import SQLModel
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-# Example PostgreSQL URL
-POSTGRES_USER = "munyroth"
-POSTGRES_PASSWORD = "734658"
-POSTGRES_DB = "konektagri"
-POSTGRES_HOST = "localhost"
-POSTGRES_PORT = "5432"
+from app.core.config import settings
 
 postgres_url = (
-    f"postgresql+asyncpg://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+    f"postgresql+asyncpg://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_DATABASE}"
 )
 
 async_engine = create_async_engine(
