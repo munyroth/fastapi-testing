@@ -3,9 +3,8 @@ fastapi[standard] ~= 0.115.14         # FastAPI with all optional standard depen
 fastapi-utils[all] ~= 0.8.0           # Extra FastAPI utilities (CBV, etc.)
 
 # SQL and DB access
-sqlmodel ~= 0.0.24                    # SQLAlchemy + Pydantic-based ORM
+sqlmodel ~= 0.0.24                    # SQLModel + Pydantic-based ORM
 greenlet ~= 3.2.3                     # Required for SQLAlchemy async support
-psycopg2 ~= 2.9.10                    # PostgreSQL driver for sync SQLAlchemy
 asyncpg ~= 0.30.0                     # PostgreSQL driver for async SQLAlchemy
 
 # Pydantic & Settings
